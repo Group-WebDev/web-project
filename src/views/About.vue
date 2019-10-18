@@ -1,5 +1,20 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="register">
+  <RegisterForm/>
   </div>
 </template>
+<script>
+import RegisterForm from '@/components/RegisterForm.vue'
+
+export default {
+  name: 'register',
+  components: {
+    RegisterForm
+  }
+}
+</script>
+<style>
+template{
+    background-color:black;
+}
+</style>

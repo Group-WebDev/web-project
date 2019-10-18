@@ -1,9 +1,9 @@
 <template>
-<div id="form">
-    <b-jumbotron bg-variant="info">
+<center><b-jumbotron id="form">
+    <b-jumbotron id="content">
         <center>
             <h1>LogIn</h1>
-        </center>
+        </center><br/>
         <b-form>
             <b-form-group id="email" label="Email address:" label-for="input-1">
                 <b-form-input type="email" placeholder="Input Email" v-model="login.email" required></b-form-input>
@@ -14,7 +14,7 @@
             <b-button type="submit" v-on:click="login()" variant="primary">Login</b-button>
         </b-form>
     </b-jumbotron>
-</div>
+</b-jumbotron></center>
 </template>
 
 <script>
@@ -33,10 +33,19 @@ export default {
 </script>
 
 <style scoped>
-#form {
-    margin-left: 30%;
-    position: relative;
-    left: 30%;
+ #form {
+     width:40%;
+     background-color:transparent;
+ }
+
+ #content{
+    background-color: rgba(0,0,0, .10);  
+	box-shadow: 1px 1px 2px black, 0 0 25px lightblue, 0 0 5px black;
+}
+
+#email, #password, h1{
+    color:white;
+
 }
 
 [class*='-message'] {
@@ -50,4 +59,5 @@ export default {
 .success-message {
     color: #32a95d;
 }
+
 </style>
