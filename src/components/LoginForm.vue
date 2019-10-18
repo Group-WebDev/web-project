@@ -9,9 +9,9 @@
                 <b-form-input type="email" placeholder="Input Email" v-model="login.email" required></b-form-input>
             </b-form-group>
             <b-form-group id="password" label="Password:" label-for="input-2">
-                <b-form-input type="password" placeholder="Password" v-model="login.password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"></b-form-input>
+                <b-form-input type="password" placeholder="Password" v-model="login.password"></b-form-input>
             </b-form-group>
-            <b-button type="submit" v-on:click="login()" variant="primary">Login</b-button>
+            <b-button type="submit" variant="primary"><router-link to="/dashboard">Login</router-link></b-button>
         </b-form>
     </b-jumbotron>
 </b-jumbotron></center>
