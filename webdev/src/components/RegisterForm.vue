@@ -18,7 +18,7 @@
                 <b-form-group id="password" label="Password:" label-for="input-2">
                     <b-form-input type="password" placeholder="Password" v-model="register.password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"></b-form-input>
                 </b-form-group>
-                <b-button type="submit" @click="$emit('add', 'user')" variant="primary">Sign Up</b-button>
+                 <router-link to="/"><b-button type="submit" @click="$emit('add', 'user')" variant="primary">Sign Up</b-button></router-link>
             </b-form>
         </b-jumbotron>
     </b-jumbotron>
@@ -72,7 +72,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+body{
+  background-image:url("../assets/background.jpg");
+  background-size:cover;
+  background-repeat:no-repeat;
+
+}
+
 #form {
     position: relative;
     width: 40%;

@@ -1,7 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import Welcome from '../views/Welcome.vue'
+// import Welcome from '../views/Welcome.vue'
+import Welcome from '../views/HomePage.vue'
+import IssuesPage from '../views/IssuesPage.vue'
+import ProjectPage from '../views/ProjectPage.vue'
 
 Vue.use(VueRouter);
 
@@ -15,6 +18,16 @@ const routes = [
     path:'/welcome',
     name:'welcome',
     component:Welcome
+  },
+  {
+    path:'/issues',
+    name:'issues',
+    component:IssuesPage
+  },
+  {
+    path:'/projects',
+    name:'projects',
+    component:ProjectPage
   },
   {
     path: "/register",

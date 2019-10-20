@@ -11,7 +11,9 @@
             <b-form-group id="password" label="Password:" label-for="input-2">
                 <b-form-input type="password" placeholder="Password" v-model="login.password"></b-form-input>
             </b-form-group>
-            <b-button type="button" variant="primary" @click="log()">Login</b-button>
+            <router-link to="/welcome"><b-button type="button" variant="primary" @click="log()">Login</b-button></router-link><br/>
+            <p1>NOt Have An Account?</p1><br/>
+            <router-link to="/register"><h6>REGISTER</h6></router-link>
         </b-form>
     </b-jumbotron>
 </b-jumbotron></center>
@@ -47,7 +49,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+body{
+  background-image:url("../assets/background.jpg");
+  background-size:cover;
+  background-repeat:no-repeat;
+
+}
  #form {
      width:40%;
      background-color:transparent;
