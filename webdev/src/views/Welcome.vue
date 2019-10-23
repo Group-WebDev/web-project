@@ -1,16 +1,16 @@
 <template>
 <div class="welcome">
-    <Welcome/>
+    <Dashboard/>
+    fbdsfdjs
 </div>
 </template>
 
 <script>
-import Welcome from "@/components/DashBoard.vue";
-
+import Dashboard from "@/components/DashBoard.vue"
 export default {
-    name: 'welcome',
-    components: {
-        Welcome
+    name:"welcome",
+    components:{
+        Dashboard
     }
 }
 </script>
