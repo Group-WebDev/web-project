@@ -5,7 +5,7 @@
             <center>
                 <h1>Register</h1>
             </center><br />
-            <b-form>
+            <b-form  :key="users.id">
                 <b-form-group id="name" label="Name:" label-for="input-1">
                     <b-form-input type="text" placeholder="Full Name" v-model="register.name" required></b-form-input>
                 </b-form-group>
@@ -18,7 +18,9 @@
                 <b-form-group id="password" label="Password:" label-for="input-2">
                     <b-form-input type="password" placeholder="Password" v-model="register.password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"></b-form-input>
                 </b-form-group>
-                 <router-link to="/"><b-button type="submit" @click="$emit('add', 'user')" variant="primary">Sign Up</b-button></router-link>
+                <router-link to="/">
+                    <b-button type="submit" @click="fetchUsers" variant="primary">Sign Up</b-button>
+                </router-link>
             </b-form>
         </b-jumbotron>
     </b-jumbotron>
@@ -48,24 +50,14 @@ export default {
         this.$store.dispatch('getUsers');
     },
     methods: {
-        addUser() {
-            this.$router.push({
-                name: 'edit'
-            });
-        },
-        async deleteUser(user) {
-            // console.log('delete', user.id);
-            await this.$store.dispatch('deleteUser', user);
-            this.$store.dispatch('getUsers');
-        },
-        editCat(user) {
-            // console.log('edit', user.id);
-            this.$router.push({
-                name: 'edit',
-                params: {
-                    user: user
-                }
-            });
+        methods: {
+            fetchUsers: function () {
+                const baseURI = 'https://jsonplaceholder.typicode.com/users'
+                this.$http.get(baseURI)
+                    .then((result) => {
+                        this.users = result.data
+                    })
+            }
         }
     }
 
@@ -73,10 +65,10 @@ export default {
 </script>
 
 <style>
-body{
-  background-image:url("../assets/background.jpg");
-  background-size:cover;
-  background-repeat:no-repeat;
+body {
+    background-image: url("../assets/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 
 }
 
