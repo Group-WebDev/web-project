@@ -2,6 +2,7 @@
 <center><b-jumbotron id="form">
     <b-jumbotron id="content">
         <center>
+             <img src="../assets/logos.png"/>
             <h1>LogIn</h1>
         </center><br/>
         <b-form>
@@ -60,6 +61,11 @@ body{
      width:40%;
      background-color:transparent;
  }
+
+ img{
+    width: 30%;
+    height: 30%;
+}
 
  #content{
     background-color: rgba(0,0,0, .10);  

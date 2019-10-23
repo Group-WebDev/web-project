@@ -3,9 +3,10 @@
     <b-jumbotron id="form">
         <b-jumbotron id="content">
             <center>
+                <img src="../assets/logos.png"/>
                 <h1>Register</h1>
             </center><br />
-            <b-form  :key="users.id">
+            <b-form>
                 <b-form-group id="name" label="Name:" label-for="input-1">
                     <b-form-input type="text" placeholder="Full Name" v-model="register.name" required></b-form-input>
                 </b-form-group>
@@ -19,7 +20,7 @@
                     <b-form-input type="password" placeholder="Password" v-model="register.password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"></b-form-input>
                 </b-form-group>
                 <router-link to="/">
-                    <b-button type="submit" @click="fetchUsers" variant="primary">Sign Up</b-button>
+                    <b-button type="submit" variant="primary">Sign Up</b-button>
                 </router-link>
             </b-form>
         </b-jumbotron>
@@ -29,7 +30,6 @@
 
 <script>
 export default {
-    props: ['users'],
     name: "register-form",
     data() {
         return {
@@ -41,25 +41,6 @@ export default {
             }
         }
     },
-    computed: {
-        user() {
-            return this.$store.state.users;
-        }
-    },
-    created() {
-        this.$store.dispatch('getUsers');
-    },
-    methods: {
-        methods: {
-            fetchUsers: function () {
-                const baseURI = 'https://jsonplaceholder.typicode.com/users'
-                this.$http.get(baseURI)
-                    .then((result) => {
-                        this.users = result.data
-                    })
-            }
-        }
-    }
 
 }
 </script>
@@ -70,6 +51,10 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
 
+}
+img{
+    width: 30%;
+    height: 30%;
 }
 
 #form {

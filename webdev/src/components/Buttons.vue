@@ -6,7 +6,7 @@
     </b-button-group>
     <b-modal id="bv-modal-example" hide-footer>
         <template v-slot:modal-title>
-            POST FORM
+            <img src="../assets/icon.png" id="img"/>&nbsp;&nbsp;POST FORM
         </template>
         <div class="d-block text-center">
            <modalForm/>
@@ -16,7 +16,7 @@
 
     <b-modal id="bv-modal-report" hide-footer>
         <template v-slot:modal-title>
-            REPORT FORM
+           <img src="../assets/icon.png" id="img"/>&nbsp;&nbsp; REPORT FORM
         </template>
         <div class="d-block text-center">
            <reportForm/>

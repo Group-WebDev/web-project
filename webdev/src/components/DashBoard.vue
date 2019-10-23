@@ -2,6 +2,7 @@
 <div id="dashboard">
     <div>
         <b-navbar toggleable="lg" type="dark" variant="info">
+                <img src="../assets/icon.png" id="img"/>
             <router-link to="/welcome">
                 <b-navbar-brand>Home</b-navbar-brand>
             </router-link>
@@ -24,3 +25,9 @@ export default {
     name: "dashboard"
 }
 </script>
+<style>
+#img{
+    width: 30px;
+    height: 30px;
+}
+</style>
