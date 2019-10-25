@@ -1,7 +1,6 @@
 <template>
 <div>
-    <div>
-        <DashBoard />
+        <DashBoard /><br/>
         <div class="homepage">
             <center>
                 <b-jumbotron id="homepage">
@@ -10,7 +9,6 @@
                 </b-jumbotron>
             </center>
         </div>
-    </div>
 </div>
 </template>
 

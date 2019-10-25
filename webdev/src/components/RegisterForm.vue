@@ -6,7 +6,7 @@
                 <img src="../assets/logos.png"/>
                 <h1>Register</h1>
             </center><br />
-            <b-form>
+            <b-form v-on:submit.prevent="onSubmit">
                 <b-form-group id="name" label="Name:" label-for="input-1">
                     <b-form-input type="text" placeholder="Full Name" v-model="register.name" required></b-form-input>
                 </b-form-group>
@@ -19,9 +19,9 @@
                 <b-form-group id="password" label="Password:" label-for="input-2">
                     <b-form-input type="password" placeholder="Password" v-model="register.password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"></b-form-input>
                 </b-form-group>
-                <router-link to="/">
+                <!-- <router-link to="/"> -->
                     <b-button type="submit" variant="primary">Sign Up</b-button>
-                </router-link>
+                <!-- </router-link> -->
             </b-form>
         </b-jumbotron>
     </b-jumbotron>

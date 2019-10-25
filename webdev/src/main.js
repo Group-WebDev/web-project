@@ -6,6 +6,13 @@ import store from './store'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import axios from 'vue-axios'
+
+Vue.prototype.$http = axios;
+      const token = localStorage.getItem('token');
+      if (token) {
+        Vue.prototype.$http.defaults.headers.common['Authorization'] = token
+      }
 
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)

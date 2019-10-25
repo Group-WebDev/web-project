@@ -9,6 +9,7 @@
             </b-jumbotron>
         </center>
     </div>
+    <ReportTable/>
 </div>
 </template>
 
@@ -16,12 +17,14 @@
 // @ is an alias to /src
 import DashBoard from '../components/DashBoard.vue'
 import Buttons from '@/components/Buttons.vue'
+import ReportTable from "@/components/ReportTable.vue";
 
 export default {
     name: 'issues',
     components: {
         DashBoard,
-        Buttons
+        Buttons,
+        ReportTable
     },
     data() {
         return {

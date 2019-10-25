@@ -21,7 +21,7 @@
         <div class="d-block text-center">
            <reportForm/>
         </div>
-        <b-button class="mt-3" variant="success" block>Report</b-button>
+        
     </b-modal>
 </div>
 </template>
