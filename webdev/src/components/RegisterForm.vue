@@ -3,10 +3,10 @@
     <b-jumbotron id="form">
         <b-jumbotron id="content">
             <center>
-                <img src="../assets/logos.png"/>
+                <img src="../assets/logos.png" />
                 <h1>Register</h1>
             </center><br />
-            <b-form v-on:submit.prevent="onSubmit">
+            <b-form @submit="checkform">
                 <b-form-group id="name" label="Name:" label-for="input-1">
                     <b-form-input type="text" placeholder="Full Name" v-model="register.name" required></b-form-input>
                 </b-form-group>
@@ -20,7 +20,7 @@
                     <b-form-input type="password" placeholder="Password" v-model="register.password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"></b-form-input>
                 </b-form-group>
                 <!-- <router-link to="/"> -->
-                    <b-button type="submit" variant="primary">Sign Up</b-button>
+                <b-button type="submit" @click="addUser" variant="primary">Sign Up</b-button>
                 <!-- </router-link> -->
             </b-form>
         </b-jumbotron>
@@ -33,14 +33,37 @@ export default {
     name: "register-form",
     data() {
         return {
+            users: [],
             register: {
-                name: '',
-                address: '',
-                email: '',
-                password: '',
+                name: null,
+                address: null,
+                email: null,
+                password: null,
             }
         }
     },
+    computed: {
+        user() {
+            return this.$store.state.users;
+        }
+    },
+    created() {
+        this.$store.dispatch('getUser');
+    },
+    methods: {
+        checkform: function (e) {
+            if (this.name !== null && this.email !== null && this.address !== null && this.password !== null) {
+                this.$router.push('/')
+            }
+            e.preventDefault();
+        },
+        addCat() {
+            this.$router.push({
+                name: 'edit'
+            });
+        },
+
+    }
 
 }
 </script>
@@ -52,7 +75,8 @@ body {
     background-repeat: no-repeat;
 
 }
-img{
+
+img {
     width: 30%;
     height: 30%;
 }

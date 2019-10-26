@@ -1,48 +1,89 @@
-import { openDb } from 'idb'
-
-const dbPromise = _ => {
-  if (!('indexedDB' in window)) {
-    throw new Error('Browser does not support IndexedDB')
-  }
-
-  return openDb('User', 1, upgradeDb => {
-    if (!upgradeDb.objectStoreNames.contains('accounts')) {
-      upgradeDb.createObjectStore('accounts')
-    }
-
-    if (!upgradeDb.objectStoreNames.contains('completed')) {
-      upgradeDb.createObjectStore('completed')
-    }
-  })
-}
-
-const checkStorage = async storeName => {
-  try {
-    const db = await dbPromise()
-    const tx = db.transaction(storeName, 'readonly')
-    const store = tx.objectStore(storeName)
-
-    return store.get(storeName)
-  } catch (error) {
-    return error
-  }
-}
-
-const saveToStorage = async (storeName, tasks) => {
-  try {
-    const db = await dbPromise()
-    const tx = db.transaction(storeName, 'readwrite')
-    const store = tx.objectStore(storeName)
-
-    store.put(tasks, storeName)
-
-    return tx.complete
-  } catch (error) {
-    return error
-  }
-}
+const DB_NAME = 'myDB';
+const DB_VERSION = 1;
+let DB;
 
 export default {
-  checkStorage,
-  saveToStorage
+
+	async getDb() {
+		return new Promise((resolve, reject) => {
+
+			if(DB) { return resolve(DB); }
+			console.log('OPENING DB', DB);
+			let request = window.indexedDB.open(DB_NAME, DB_VERSION);
+			
+			request.onerror = e => {
+				console.log('Error opening db', e);
+				reject('Error');
+			};
+	
+			request.onsuccess = e => {
+				DB = e.target.result;
+				resolve(DB);
+			};
+			
+			request.onupgradeneeded = e => {
+				console.log('onupgradeneeded');
+				let db = e.target.result;
+				db.createObjectStore("accounts", { autoIncrement: true, keyPath:'id' });
+			};
+		});
+	},
+	async deleteUser(user) {
+
+		let db = await this.getDb();
+
+		return new Promise(resolve => {
+
+			let trans = db.transaction(['users'],'readwrite');
+			trans.oncomplete = () => {
+				resolve();
+			};
+
+			let store = trans.objectStore('users');
+			store.delete(user.id);
+		});	
+	},
+	async getUser() {
+
+		let db = await this.getDb();
+
+		return new Promise(resolve => {
+
+			let trans = db.transaction(['users'],'readonly');
+			trans.oncomplete = () => {
+				resolve(users);
+			};
+			
+			let store = trans.objectStore('users');
+			let users = [];
+			
+			store.openCursor().onsuccess = e => {
+				let cursor = e.target.result;
+				if (cursor) {
+					users.push(cursor.value)
+					cursor.continue();
+				}
+			};
+
+		});
+	},
+
+	async saveUser(user) {
+
+		let db = await this.getDb();
+
+		return new Promise(resolve => {
+
+			let trans = db.transaction(['users'],'readwrite');
+			trans.oncomplete = () => {
+				resolve();
+			};
+
+			let store = trans.objectStore('users');
+			store.put(user);
+
+		});
+	
+	}
+
 }
