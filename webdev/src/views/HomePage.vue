@@ -9,6 +9,7 @@
                 </b-jumbotron>
             </center>
         </div>
+
 </div>
 </template>
 
@@ -16,6 +17,7 @@
 // @ is an alias to /src
 import DashBoard from '../components/DashBoard.vue'
 import Buttons from '@/components/Buttons.vue'
+
 
 export default {
     name: 'homepage',

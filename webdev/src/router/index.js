@@ -10,12 +10,12 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
+    path: "/login",
     name: "home",
     component: Home
   },
   {
-    path:'/welcome',
+    path:'/',
     name:'welcome',
     component:Welcome
   },
@@ -45,5 +45,7 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 });
+
+
 
 export default router;

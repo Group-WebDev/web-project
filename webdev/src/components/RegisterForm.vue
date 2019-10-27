@@ -20,7 +20,7 @@
                     <b-form-input type="password" placeholder="Password" v-model="register.password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"></b-form-input>
                 </b-form-group>
                 <!-- <router-link to="/"> -->
-                <b-button type="submit" @click="addUser" variant="primary">Sign Up</b-button>
+                <b-button type="submit"  @click="save" variant="primary">Sign Up</b-button>
                 <!-- </router-link> -->
             </b-form>
         </b-jumbotron>
@@ -31,9 +31,9 @@
 <script>
 export default {
     name: "register-form",
+    props: ['user'],
     data() {
         return {
-            users: [],
             register: {
                 name: null,
                 address: null,
@@ -43,7 +43,7 @@ export default {
         }
     },
     computed: {
-        user() {
+        users() {
             return this.$store.state.users;
         }
     },
@@ -53,15 +53,15 @@ export default {
     methods: {
         checkform: function (e) {
             if (this.name !== null && this.email !== null && this.address !== null && this.password !== null) {
-                this.$router.push('/')
+                this.$router.push('/login')
             }
             e.preventDefault();
         },
-        addCat() {
-            this.$router.push({
-                name: 'edit'
-            });
-        },
+        async save() {
+            await this.$store.dispatch('saveCat', this.register);
+            console.log('back');
+            this.$router.push('/login');
+        }
 
     }
 

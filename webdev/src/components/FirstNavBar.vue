@@ -3,7 +3,7 @@
     <div>
         <b-navbar toggleable="lg" type="dark">
             <b-navbar-nav class="ml-auto">
-                <router-link to="/">
+                <router-link to="/login">
                     <b-navbar-brand>Login |</b-navbar-brand>
                 </router-link>
                 <router-link to="/register">

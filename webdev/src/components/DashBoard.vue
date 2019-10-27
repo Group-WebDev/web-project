@@ -3,7 +3,7 @@
     <div>
         <b-navbar toggleable="lg" type="dark" variant="info">
             <img src="../assets/icon.png" id="img" />
-            <router-link to="/welcome">
+            <router-link to="/">
                 <b-navbar-brand>Home</b-navbar-brand>
             </router-link>
             <router-link to="/projects">

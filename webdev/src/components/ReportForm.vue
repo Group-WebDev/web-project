@@ -2,11 +2,11 @@
 <div>
     <b-form-group @submit.prevent="handleSubmit">
         <label for="name">Name of Report:</label>
-        <b-input class="form-group" placeholder="name of Report" id="name" :class="{'has-error':submitting && invalidname}" v-model="report.name" @focus="clearStatus" @keypress="clearStatus" ></b-input>
+        <b-input class="form-group" placeholder="name of Report" id="name" :class="{'has-error':submitting && invalidname}" v-model="report.name" @focus="clearStatus" @keypress="clearStatus"></b-input>
         <label for="address">Address:</label>
-        <b-input class="form-group" placeholder="Address" id="address" :class="{'has-error':submitting && invalidaddress}" v-model="report.address" @focus="clearStatus" @keypress="clearStatus" ></b-input>
+        <b-input class="form-group" placeholder="Address" id="address" :class="{'has-error':submitting && invalidaddress}" v-model="report.address" @focus="clearStatus" @keypress="clearStatus"></b-input>
         <label for="description">Description:</label>
-        <b-textarea class="form-group" placeholder="Description" id="description" :class="{'has-error':submitting && invaliddescription}" v-model="report.description" @focus="clearStatus" @keypress="clearStatus" ></b-textarea>
+        <b-textarea class="form-group" placeholder="Description" id="description" :class="{'has-error':submitting && invaliddescription}" v-model="report.description" @focus="clearStatus" @keypress="clearStatus"></b-textarea>
         <b-form-file v-model="file" :state="Boolean(file)" placeholder="Choose a file or drop it here..." drop-placeholder="Drop file here..." accept=".jpg, .png, .gif"></b-form-file>
         <div class="mt-3">Selected file: {{ file ? file.name : '' }}</div>
         <b-button variant="danger" @click="file = null">Reset</b-button>
@@ -30,9 +30,9 @@ export default {
             success: false,
             report: {
                 file: null,
-                name:null,
-                address:null,
-                description:null,
+                name: null,
+                address: null,
+                description: null,
             }
         }
     },
@@ -67,14 +67,15 @@ export default {
         invalidaddress() {
             return this.report.address === ''
         },
-        invaliddescription(){
-          return this.report.invaliddescription === ''
+        invaliddescription() {
+            return this.report.invaliddescription === ''
         }
     }
 }
 </script>
+
 <style>
-  .error-message {
+.error-message {
     color: #d33c40;
 }
 

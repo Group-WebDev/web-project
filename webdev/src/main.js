@@ -8,13 +8,14 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import axios from 'vue-axios'
 
-Vue.prototype.$http = axios;
-      const token = localStorage.getItem('token');
-      if (token) {
-        Vue.prototype.$http.defaults.headers.common['Authorization'] = token
-      }
 
 Vue.config.productionTip = false
+Vue.prototype.$http = axios;
+const accessToken = localStorage.getItem('access_token')
+
+if (accessToken) {
+  Vue.prototype.$http.defaults.headers.common['Authorization'] = accessToken
+}
 Vue.use(BootstrapVue)
 
 new Vue({

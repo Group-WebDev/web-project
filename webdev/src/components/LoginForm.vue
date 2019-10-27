@@ -38,7 +38,7 @@ export default {
     methods: {
         checkform: function (e) {
             if (this.email !== null && this.password !== null) {
-                this.$router.push('/welcome')
+                this.$router.push('/')
             }
             e.preventDefault();
         }
