@@ -1,12 +1,13 @@
 <template>
-<v-card class="mx-auto card" max-width="500">
+<v-card class="mx-auto card" max-width="500" color="rgba(255, 255, 255, 1)" :elevation="14">
     <v-snackbar v-model="snackbar" absolute top right color="success">
         <span>Registration successful!</span>
     </v-snackbar>
     <v-container>
         <v-form ref="user" @submit.prevent="submit">
-            <v-container>
-                <h1>Register</h1>
+            <v-container class="container">
+                <center><v-img src="@/assets/logos.png" id="image"></v-img>
+                    <h1>Register</h1></center>
                 <v-text-field v-model="user.username" :rules="rules.required" color="purple darken-2" label="Username"></v-text-field>
                 <v-text-field v-model="user.email" :rules="[rules.required, rules.email]" label="E-mail"></v-text-field>
                 <v-text-field v-model="user.password" :append-icon="show1 ? 'visibility' : 'visibility_off'" :rules="[rules.required, rules.password]" :type="show1 ? 'text' : 'password'" name="input-10-1" label="Password" hint="At least 8 characters" counter @click:append="show1 = !show1"></v-text-field>
@@ -136,6 +137,10 @@ export default {
 
 <style>
 .card {
-    margin-top: 10%;
+    margin-top: 5%; 
+}
+#image{
+    width: 40%;
+    height: 40%;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="body">
       <Navigation/>
       <LoginForm/>
   </div>
@@ -17,6 +17,10 @@ export default {
 }
 </script>
 
-<style>
 
+<style>
+.body{
+    background-image: url('../assets/background.jpg');
+    background-size: cover;
+}
 </style>

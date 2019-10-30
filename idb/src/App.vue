@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-content>
+    <v-content class="body"> 
       <router-view />
     </v-content>
   </v-app>
@@ -13,8 +13,8 @@ export default {
   data: () => ({
     //
   }),
-  created () {
-    this.$vuetify.theme.dark = true
-  }
+
 };
 </script>
+<style>
+</style>

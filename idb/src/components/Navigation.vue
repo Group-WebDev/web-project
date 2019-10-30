@@ -1,14 +1,14 @@
 <template>
-<v-toolbar dense>
+<v-toolbar dense color="transparent" class="white--text">
     <v-toolbar-title>Eco Green |</v-toolbar-title>
 
     <v-spacer></v-spacer>
-    <v-btn>
-        <router-link to='/'><span>Login</span></router-link>
-    </v-btn>
-    <v-btn>
-        <router-link to='/register'><span>SignUp</span></router-link>
-    </v-btn>
+    <router-link to='/'><v-btn color="primary" class="white--text">
+        <span>Login</span>
+    </v-btn></router-link>
+    <router-link to='/register'><v-btn>
+        <span>SignUp</span>
+    </v-btn></router-link>
 
 </v-toolbar>
 </template>
@@ -18,5 +18,4 @@ export default {}
 </script>
 
 <style>
-
 </style>

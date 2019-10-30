@@ -1,5 +1,5 @@
 <template>
-<v-toolbar dense>
+<v-toolbar dense color="blue lighten-4">
     <v-toolbar-title>Eco Green |</v-toolbar-title>
 
     <v-btn icon>
@@ -16,6 +16,9 @@
     <v-spacer></v-spacer>
 
     <v-btn icon>
+        <v-icon>mdi-bell</v-icon>
+    </v-btn>
+    <v-btn icon>
         <v-icon>mdi-face</v-icon>
         <span>{{ user.email }}</span>
     </v-btn>
@@ -23,8 +26,6 @@
     <v-btn>
         <span>Logout</span>
     </v-btn>
-
-
 </v-toolbar>
 </template>
 
