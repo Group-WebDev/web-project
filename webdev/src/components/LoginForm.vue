@@ -4,17 +4,17 @@
         <b-jumbotron id="content">
             <center>
                 <img src="../assets/logos.png" />
-                <h1>LogIn</h1>
+                <h1>Login</h1>
             </center><br />
             <b-form @submit="checkform">
                 <b-form-group id="email" label="Email address:" label-for="input-1">
-                    <b-form-input type="email" placeholder="Input Email" v-model="login.email" required></b-form-input>
+                    <b-form-input type="email" placeholder="Input Email" v-model="user.email" required></b-form-input>
                 </b-form-group>
                 <b-form-group id="password" label="Password:" label-for="input-2">
-                    <b-form-input type="password" placeholder="Password" v-model="login.password" required></b-form-input>
+                    <b-form-input type="password" placeholder="Password" v-model="user.password" required></b-form-input>
                 </b-form-group>
-                <b-button type="submit" variant="primary">Login</b-button><br />
-                <p1>NOt Have An Account?</p1><br />
+                <b-button type="submit" variant="primary" @submit="save">Login</b-button><br />
+                <p>NOt Have An Account?</p><br />
                 <router-link to="/register">
                     <h6>REGISTER</h6>
                 </router-link>
@@ -26,16 +26,30 @@
 
 <script>
 export default {
-    name: 'login-form',
+    name: 'user-form',
+    props:['users'],
     data() {
         return {
-            login: {
-                email: null,
-                password: null,
-            }
+            user: null
+        }
+    },
+    created() {
+        if (this.$route.params.user) {
+            this.user = this.$route.params.user;
+            console.log(this.user = this.$route.params.user)
+        } else {
+            this.user = {
+                email: '',
+                password: ""
+            };
         }
     },
     methods: {
+        async save() {
+            await this.$store.dispatch('saveUser', this.user);
+            console.log('back');
+            this.$router.push('/');
+        },
         checkform: function (e) {
             if (this.email !== null && this.password !== null) {
                 this.$router.push('/')

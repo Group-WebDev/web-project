@@ -25,6 +25,7 @@ export default new Vuex.Store({
       });
     },
     async saveUser(context, user) {
+      console.log("save db")
       await idb.saveUser(user);
     }
   }

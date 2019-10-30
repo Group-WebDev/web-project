@@ -1,4 +1,4 @@
-const DB_NAME = 'myDB';
+const DB_NAME = 'userdb';
 const DB_VERSION = 1;
 let DB;
 
@@ -18,15 +18,13 @@ export default {
 	
 			request.onsuccess = e => {
 				DB = e.target.result;
-				console.log('success')
 				resolve(DB);
 			};
 			
 			request.onupgradeneeded = e => {
 				console.log('onupgradeneeded');
 				let db = e.target.result;
-				db.createObjectStore("user", { autoIncrement: true, keyPath:'id' });
-
+				db.createObjectStore("users", { autoIncrement: true, keyPath:'id' });
 			};
 		});
 	},
@@ -36,7 +34,7 @@ export default {
 
 		return new Promise(resolve => {
 
-			let trans = db.transaction('user','readwrite');
+			let trans = db.transaction(['users'],'readwrite');
 			trans.oncomplete = () => {
 				resolve();
 			};
@@ -45,13 +43,13 @@ export default {
 			store.delete(user.id);
 		});	
 	},
-	async getUser() {
+	async getUsers() {
 
 		let db = await this.getDb();
 
 		return new Promise(resolve => {
 
-			let trans = db.transaction('user','readonly');
+			let trans = db.transaction(['users'],'readonly');
 			trans.oncomplete = () => {
 				resolve(users);
 			};
@@ -73,19 +71,16 @@ export default {
 	async saveUser(user) {
 
 		let db = await this.getDb();
-		console.log(db)
 
 		return new Promise(resolve => {
 
-			var trans = db.transaction('users','readwrite');
-			console.log(trans)
+			let trans = db.transaction(['users'],'readwrite');
 			trans.oncomplete = () => {
 				resolve();
 			};
 
-			var store = trans.objectStore('users');
+			let store = trans.objectStore('users');
 			store.put(user);
-			console.log(store)
 
 		});
 	

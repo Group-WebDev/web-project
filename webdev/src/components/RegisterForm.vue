@@ -4,23 +4,23 @@
         <b-jumbotron id="content">
             <center>
                 <img src="../assets/logos.png" />
-                <h1>Register</h1>
+                <h1>user</h1>
             </center><br />
             <b-form @submit="checkform">
                 <b-form-group id="name" label="Name:" label-for="input-1">
-                    <b-form-input type="text" placeholder="Full Name" v-model="register.name" required></b-form-input>
+                    <b-form-input type="text" placeholder="Full Name" v-model="user.name" required></b-form-input>
                 </b-form-group>
                 <b-form-group id="address" label="Address:" label-for="input-1">
-                    <b-form-input type="text" placeholder="Input Address" v-model="register.address" required></b-form-input>
+                    <b-form-input type="text" placeholder="Input Address" v-model="user.address" required></b-form-input>
                 </b-form-group>
                 <b-form-group id="email" label="Email address:" label-for="input-1">
-                    <b-form-input type="email" placeholder="Input Email" v-model="register.email" required></b-form-input>
+                    <b-form-input type="email" placeholder="Input Email" v-model="user.email" required></b-form-input>
                 </b-form-group>
                 <b-form-group id="password" label="Password:" label-for="input-2">
-                    <b-form-input type="password" placeholder="Password" v-model="register.password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"></b-form-input>
+                    <b-form-input type="password" placeholder="Password" v-model="user.password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"></b-form-input>
                 </b-form-group>
                 <!-- <router-link to="/"> -->
-                <b-button type="submit"  @click="save" variant="primary">Sign Up</b-button>
+                <b-button type="submit" @click="save" variant="primary">Sign Up</b-button>
                 <!-- </router-link> -->
             </b-form>
         </b-jumbotron>
@@ -30,25 +30,23 @@
 
 <script>
 export default {
-    name: "register-form",
-    props: ['user'],
+    name: "user-form",
     data() {
         return {
-            register: {
-                name: null,
-                address: null,
-                email: null,
-                password: null,
-            }
-        }
-    },
-    computed: {
-        users() {
-            return this.$store.state.users;
+            user: null
         }
     },
     created() {
-        this.$store.dispatch('getUser');
+        if (this.$route.params.user) {
+            this.user = this.$route.params.user;
+            console.log(this.user)
+        } else {
+            this.user = {
+                name: '',
+                address: '',
+                email: ''
+            };
+        }
     },
     methods: {
         checkform: function (e) {
@@ -58,9 +56,9 @@ export default {
             e.preventDefault();
         },
         async save() {
-            await this.$store.dispatch('saveCat', this.register);
+            await this.$store.dispatch('saveUser', this.user);
             console.log('back');
-            this.$router.push('/login');
+            this.$router.push('/');
         }
 
     }
