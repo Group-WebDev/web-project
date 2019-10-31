@@ -23,6 +23,19 @@ export default new Vuex.Store({
     },
     async saveUser(context, user) {
       await idb.saveUser(user);
+    },
+    async deleteData(context, data) {
+      console.log("store is being asked to delete " + data.id);
+      await idb.deleteData(data);
+    },
+    async getDatas(context) {
+      context.state.datas = null;
+      let datas = await idb.getDatas();
+      console.log(datas);
+        context.state.datas = datas;
+    },
+    async saveData(context, data) {
+      await idb.saveData(data);
     }
   }
 });
