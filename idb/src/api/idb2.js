@@ -1,4 +1,4 @@
-const DB_NAME = 'userdb';
+const DB_NAME = 'datadb';
 const DB_VERSION = 1;
 let DB;
 
@@ -24,44 +24,43 @@ export default {
 			request.onupgradeneeded = e => {
 				console.log('onupgradeneeded');
 				let db = e.target.result;
-				db.createObjectStore("users", { autoIncrement: true, keyPath:'id' });
-				db.createObjectStore("data", { autoIncrement: true, keyPath:'id' });
+				db.createObjectStore("datas", { autoIncrement: true, keyPath:'id' });
 			};
 		});
 	},
-	async deleteUser(user) {
+	async deleteData(data) {
 
 		let db = await this.getDb();
 
 		return new Promise(resolve => {
 
-			let trans = db.transaction(['users'],'readwrite');
+			let trans = db.transaction(['datas'],'readwrite');
 			trans.oncomplete = () => {
 				resolve();
 			};
 
-			let store = trans.objectStore('users');
-			store.delete(user.id);
+			let store = trans.objectStore('datas');
+			store.delete(data.id);
 		});	
 	},
-	async getUsers() {
+	async getDatas() {
 
 		let db = await this.getDb();
 
 		return new Promise(resolve => {
 
-			let trans = db.transaction(['users'],'readonly');
+			let trans = db.transaction(['datas'],'readonly');
 			trans.oncomplete = () => {
-				resolve(users);
+				resolve(datas);
 			};
 			
-			let store = trans.objectStore('users');
-			let users = [];
+			let store = trans.objectStore('datas');
+			let datas = [];
 			
 			store.openCursor().onsuccess = e => {
 				let cursor = e.target.result;
 				if (cursor) {
-					users.push(cursor.value)
+					datas.push(cursor.value)
 					cursor.continue();
 				}
 			};
@@ -69,19 +68,19 @@ export default {
 		});
 	},
 
-	async saveUser(user) {
+	async saveData(data) {
 
 		let db = await this.getDb();
 
 		return new Promise(resolve => {
 
-			let trans = db.transaction(['users'],'readwrite');
+			let trans = db.transaction(['datas'],'readwrite');
 			trans.oncomplete = () => {
 				resolve();
 			};
 
-			let store = trans.objectStore('users');
-			store.put(user);
+			let store = trans.objectStore('datas');
+			store.put(data);
 
 		});
 	

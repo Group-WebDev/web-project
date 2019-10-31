@@ -1,8 +1,8 @@
 <template>
 <div id="home">
-    <NavBar :user="users"/>
+    <NavBar :user="users" />
     <v-container  class="mx-auto" id="container">
-        <center><h1>Home</h1></center><br/>
+        <center><h1>Issues</h1></center><br/>
         <Button/>
     </v-container>
 </div>
@@ -16,7 +16,6 @@ export default {
         NavBar,
         Button
     },
-    
     computed: {
         users() {
             return this.$store.state.users;

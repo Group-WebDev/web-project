@@ -4,6 +4,8 @@ import Router from 'vue-router'
 import Register from './views/NavForm.vue'
 import Login from './views/NavForm2.vue'
 import HomePage from './views/HomePage.vue'
+import Issues from './views/Issues.vue'
+import Projects from './views/Projects.vue'
 
 Vue.use(Router)
 
@@ -25,6 +27,16 @@ export default new Router({
       path: '/homepage',
       name: 'homepage',
       component: HomePage
+    },
+    {
+      path: '/issues',
+      name: 'issues',
+      component: Issues
+    },
+    {
+      path: '/projects',
+      name: 'projects',
+      component: Projects
     },
     {
       path: '/edit',

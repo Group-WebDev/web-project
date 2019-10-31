@@ -2,17 +2,17 @@
 <v-toolbar dense color="blue lighten-4">
     <v-toolbar-title>Eco Green |</v-toolbar-title>
 
-    <v-btn icon>
+    <router-link to="/homepage" v-model="home"><v-btn icon>
         <v-icon>mdi-home</v-icon><br/>
-    </v-btn>
+    </v-btn></router-link>
 
-    <v-btn icon>
+    <router-link to="/issues" v-model="issues"><v-btn icon>
         <v-icon>mdi-alert</v-icon><br/>
-    </v-btn>
+    </v-btn></router-link>
 
-    <v-btn icon>
+    <router-link to='/projects' v-model="project"><v-btn icon>
         <v-icon>mdi-recycle</v-icon><br/>
-    </v-btn>
+    </v-btn></router-link>
     <v-spacer></v-spacer>
 
     <v-btn icon>
