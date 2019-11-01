@@ -40,7 +40,8 @@ export default {
             name: '',
             address: '',
             description: '',
-            file: []
+            file: [],
+            items:[]
         }
     }),
     created() {
@@ -48,10 +49,11 @@ export default {
             this.data = this.$route.params.data;
         } else {
             this.data = {
-                username: '',
-                email: '',
-                password: '',
-                terms: false
+                name: '',
+                address: '',
+                description: '',
+                file:[],
+                items:[]
             };
         }
     },
@@ -75,10 +77,10 @@ export default {
             this.data.name = ''
             this.data.address = ''
             this.data.description = ''
-            this.data.file = ''
+            this.data.file = []
             this.items = []
         },
-        submit() {
+        submit() {  
             this.resetForm()
         },
     },
