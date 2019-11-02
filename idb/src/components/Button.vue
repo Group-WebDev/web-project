@@ -34,15 +34,15 @@
 <script>
 export default {
     data: () => ({
-        dialog: false,
-        items: ['Problem', 'Solution'],
+        items: ['solution', 'problem'],
         data: {
             name: '',
             address: '',
             description: '',
-            file: [],
-            items:[]
+            file: "",
+            items: ""
         }
+
     }),
     created() {
         if (this.$route.params.data) {
@@ -50,10 +50,10 @@ export default {
         } else {
             this.data = {
                 name: '',
-                address: '',
                 description: '',
-                file:[],
-                items:[]
+                address: '',
+                items: "",
+                file: []
             };
         }
     },
@@ -64,14 +64,17 @@ export default {
                 this.data.address &&
                 this.data.description &&
                 this.data.file &&
-                this.items   
+                this.items
             )
         },
     },
     methods: {
-        async save() {
-            await this.$store.dispatch('saveData', this.data);
-            console.log('back');
+        methods: {
+            async save() {
+                await this.$store.dispatch('saveData', this.data);
+                console.log('back');
+                this.$router.push('/homepage');
+            }
         },
         resetForm() {
             this.data.name = ''
@@ -80,7 +83,7 @@ export default {
             this.data.file = []
             this.items = []
         },
-        submit() {  
+        submit() {
             this.resetForm()
         },
     },

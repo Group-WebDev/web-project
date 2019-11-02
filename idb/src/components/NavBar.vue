@@ -20,7 +20,6 @@
     </v-btn>
     <v-btn icon>
         <v-icon>mdi-face</v-icon><br/>
-        <span>{{ user.username}}</span>
     </v-btn>
 
     <v-btn>
@@ -33,7 +32,7 @@
 export default {
     props: ['user'],
     data: () => ({
-
+        
     }),
     created() {
         console.log('user created');
